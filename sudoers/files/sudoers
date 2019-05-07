@@ -92,6 +92,9 @@ Runas_Alias {{ name }} = {{ ",".join(runas) }}
 {%- endfor %}
 
 # Group privilege specification
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
 {%- for group,specs in groups.items() %}
   {%- for spec in specs %}
 %{{ group }} {{ spec }}
